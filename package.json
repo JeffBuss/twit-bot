@@ -1,0 +1,22 @@
+{
+  "name": "twit-bot",
+  "version": "1.0.0",
+  "description": "A simple node Twitter bot",
+  "main": "bot.jsx",
+  "scripts": {
+    "start": "node bot.jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeff Buss",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffBuss/twit-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JeffBuss/twit-bot/issues"
+  },
+  "homepage": "https://github.com/JeffBuss/twit-bot#readme"
+}
