@@ -57,7 +57,6 @@ let favoriteTweet = () => {
     // find tweets
     let tweet = data.statuses;
     // function to generate a random tweet
-    // function to generate a random tweet
     let ranDom = (arr) => {
       let index = Math.floor(Math.random()*arr.length);
       return arr[index];
@@ -84,3 +83,35 @@ let favoriteTweet = () => {
 favoriteTweet();
 // repeat every 5 minutes
 setInterval(favoriteTweet, 300000);
+
+// FOLLOW RESPONSE BOT
+
+// followed callback
+let followed = (event) => {
+  console.log('Follow event running');
+  //get their handle
+  let
+    name = event.source.name,
+    screenName = event.source.screen_name;
+  // reply to follower
+  tweetNow('@' + screenName + ' Thanks for the follow!');
+}
+
+// function to tweet back to follower
+let tweetNow = (tweetTxt) => {
+  let tweet = {
+      status: tweetTxt
+  }
+  Twitter.post('statuses/update', tweet, (err, data, response) => {
+    if(err){
+      console.log("Error in Replying");
+    }
+    else{
+      console.log("Gratitude shown successfully");
+    }
+  });
+}
+//set up stream
+const stream = Twitter.stream('user');
+// when someone followss
+stream.on('follow', followed);
