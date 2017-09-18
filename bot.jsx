@@ -3,9 +3,9 @@ const config = require('./config.jsx');
 
 const Twitter = new twit(config);
 
-// RETWEET BOT
+// >>>>>>>>>>RETWEET BOT
 
-let retweet = () => {
+const retweet = () => {
     let params = {
         q: '#nodejs, #Nodejs',
         result_type: 'recent',
@@ -13,7 +13,7 @@ let retweet = () => {
     }
 
     Twitter.get('search/tweets', params, (err, data) => {
-      // if there no errors
+      // if there are no errors
         if (!err) {
           // grab ID of tweet to retweet
             let retweetId = data.statuses[0].id_str;
@@ -42,10 +42,10 @@ retweet();
 // repeat every 5 minutes
 setInterval(retweet, 300000);
 
-// FAVORITE BOT
+// >>>>>>>>>>FAVORITE BOT
 
 // find a random tweet and fav it
-let favoriteTweet = () => {
+const favoriteTweet = () => {
   let params = {
       q: '#nodejs, #Nodejs',
       result_type: 'recent',
@@ -54,7 +54,6 @@ let favoriteTweet = () => {
   // find the tweet
   Twitter.get('search/tweets', params, (err,data) => {
 
-    // find tweets
     let tweet = data.statuses;
     // function to generate a random tweet
     let ranDom = (arr) => {
@@ -84,10 +83,10 @@ favoriteTweet();
 // repeat every 5 minutes
 setInterval(favoriteTweet, 300000);
 
-// FOLLOW RESPONSE BOT
+// >>>>>>>>>>FOLLOW RESPONSE BOT
 
 // followed callback
-let followed = (event) => {
+const followed = (event) => {
   console.log('Follow event running');
   //get their handle
   let
@@ -98,15 +97,15 @@ let followed = (event) => {
 }
 
 // function to tweet back to follower
-let tweetNow = (tweetTxt) => {
+const tweetNow = (tweetTxt) => {
   let tweet = {
       status: tweetTxt
   }
   Twitter.post('statuses/update', tweet, (err, data, response) => {
-    if(err){
+    if (err) {
       console.log("Error in Replying");
     }
-    else{
+    else {
       console.log("Gratitude shown successfully");
     }
   });
